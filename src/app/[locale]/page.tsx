@@ -6,8 +6,8 @@ export default function Page() {
   const t = useTranslations('site');
 
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <h1 className="text-center text-4xl font-extrabold !leading-tight tracking-tighter" style={{fontFamily: 'sans-serif'}}>
+    <section style={{padding: '40px 24px'}}>
+      <h1 style={{fontFamily: 'sans-serif', textAlign: 'center', fontSize: '2.25rem', lineHeight: '2.5rem', fontWeight: '800', letterSpacing: '-0.05em'}}>
         {t('desc')}
       </h1> 
       <FormComponent />
