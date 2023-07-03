@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { PropsWithChildren, useEffect, useState } from 'react';
@@ -15,15 +16,17 @@ export type ProviderProps = PropsWithChildren<{
 }>;
 
 export function AntdConfigProvider({ children, locale }: ProviderProps) {
-  const { theme: nowTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
+
+  useEffect(() => {
+    if(theme!){
+      setTheme('light')
+    }
+  }, [])
 
   return (
     <ConfigProvider
       locale={(languages as any)[(locale as any) ?? defaultLocale].antd}
-      theme={{
-        algorithm:
-          nowTheme === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      }}
     >
       <AntdProvider>{children}</AntdProvider>
     </ConfigProvider>
